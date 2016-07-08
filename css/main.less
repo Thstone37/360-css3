@@ -12,33 +12,29 @@
  	     -o-transition:@a @duration @timefun @delay;
             transition:@a @duration @timefun @delay;
  }
+ .transform2d(translate,@x,@y,rotate,@deg){
+ 	transform:translate(@x,@y) rotate(@deg);
+ }
  .transform2d(translate,@x,@y){
- 	-webkit-transform:tanslate(@x,@y);
- 	   -moz-transform:tanslate(@x,@y);
- 	    -ms-transform:tanslate(@x,@y);
- 	     -o-transform:tanslate(@x,@y);
- 	        transform:tanslate(@x,@y);
+ 	-webkit-transform:translate(@x,@y);
+ 	   -moz-transform:translate(@x,@y);
+ 	    -ms-transform:translate(@x,@y);
+ 	     -o-transform:translate(@x,@y);
+ 	        transform:translate(@x,@y);
  }
-  .transform2d(translateX,@x,@y){
- 	-webkit-transform:tanslate(@x,@y);
- 	   -moz-transform:tanslate(@x,@y);
- 	    -ms-transform:tanslate(@x,@y);
- 	     -o-transform:tanslate(@x,@y);
- 	        transform:tanslate(@x,@y);
- }
-  .transform2d(translateY,@x){
- 	-webkit-transform:tanslateX(@x);
- 	   -moz-transform:tanslateX(@x);
- 	    -ms-transform:tanslateX(@x);
- 	     -o-transform:tanslateX(@x);
- 	        transform:tanslateX(@x);
+  .transform2d(translateX,@x){
+ 	-webkit-transform:translateX(@x);
+ 	   -moz-transform:translateX(@x);
+ 	    -ms-transform:translateX(@x);
+ 	     -o-transform:translateX(@x);
+ 	        transform:translateX(@x);
  }
    .transform2d(translateY,@y){
- 	-webkit-transform:tanslateX(@y);
- 	   -moz-transform:tanslateX(@y);
- 	    -ms-transform:tanslateX(@y);
- 	     -o-transform:tanslateX(@y);
- 	        transform:tanslateX(@y);
+ 	-webkit-transform:translateY(@y);
+ 	   -moz-transform:translateY(@y);
+ 	    -ms-transform:translateY(@y);
+ 	     -o-transform:translateY(@y);
+ 	        transform:translateY(@y);
  }
  .transform2d(rotate,@deg){
     -webkit-transform:rotate(@deg);
@@ -108,7 +104,19 @@
             
             flex-wrap:wrap;
 
-           img{flex-grow:1}
+           img{flex-grow:1;
+          
+           }
+           img:nth-child(1){
+           	.transform2d(translate,300px,300px,rotate,45deg);
+
+           }
+           img:nth-child(2){
+           	.transform2d(translate,200px,200px,rotate,45deg);
+           }
+           img:nth-child(3){
+           	.transform2d(translate,400px,340px,rotate,45deg);
+           }
 		}
 		.info{
 			width:635px;
@@ -117,4 +125,109 @@
 
 		}
 	}
+	.p2.current  .shiled img:nth-child(1){
+		.transition(all,1s,linear,0s);
+		.transform2d(translate,0px,0px,rotate,0deg);
+	}
+	.p2.current  .shiled img:nth-child(2){
+		.transition(all,1s,linear,0s);
+		.transform2d(translate,0px,0px,rotate,0deg);
+	}
+	.p2.current  .shiled img:nth-child(3){
+		.transition(all,1s,linear,0s);
+		.transform2d(translate,0px,0px,rotate,0deg);
+	}
+	.p3{
+			>div{display: flex;
+			justify-content:space-around;
+			align-items:center;}
+		.info{
+            width:631px;
+            height: 278px;
+            background:url(../images/info_3.png) no-repeat center;
+		}
+		.circle{
+			width:453px;
+			height: 449px;
+			background:url(../images/circle.png) no-repeat center;
+		}
+		.rocket{
+			width:203px;
+			height: 204px;
+			background:url(../images/rocket.png) no-repeat center;
+			position: absolute;
+			left:0;
+			bottom:0;
+			.transform2d(translate,200px,300px,rotate,0deg);
+			
+		}
+	}
+	.p3.current .rocket{
+		.transform2d(translate,1040px,-240px,rotate,0deg);
+		.transition(all,1s,linear,0s);
+	}
+	.p4{
+	   >div{
+	   	    display: flex;
+			justify-content:space-around;
+			align-items:center;
+		}
+		.serach{
+			width:529px;
+			height:340px;
+			position: relative;
+			.transform2d(translateX,-120%);
+			
+			.toolbar{
+				width:520px;
+				height: 66px;
+				background: url(../images/search.png) no-repeat 0 0;
+			}
+			.key{
+              position: absolute;
+              width:0px;
+              height: 22px;
+              top:23px;
+              left:20px;
+              background: url(../images/key.png) no-repeat 0 0;
+			}
+			@keyframes myanimate{
+				from{width:0px}
+				to{width:99px}
+			}
+			.wrap{
+				overflow: hidden;
+				.transform2d(translateY,-13px);
+			.result{
+				width:529px;
+				height: 372px;
+				background: url(../images/result.png) no-repeat center;
+				.transform2d(translateY,-100%);
+				
+			}
+		   }
+		}
+		.info{
+			width:612px;
+			height: 299px;
+			background: url(../images/info_4.png) no-repeat center;
+		}
+	}
+	.p4.current{
+         .serach{
+         	.transform2d(translateX,0);
+         	
+         	.transition(all,1s,linear,0s);
+         	.key{
+         		
+         		animation:myanimate 1s steps(5) 1s forwards;
+         	}
+         	.result{
+         		
+         		.transform2d(translateY,0);
+         		.transition(all,1s,linear,2.3s);
+         	}
+         }
+
+	} 
 }
