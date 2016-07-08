@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--使用到jQuery-->
+    <script src="js/jquery.min.js"></script>
+    <!--导入jQuery 的插件包-->
+    <script src="js/jquery.fullPage.min.js"></script>
+
+    <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }
+
+            .first{
+                 padding-top: 80px;
+            }
+
+            .first .logo{
+                 width: 100%;
+                 background: url("images/logo.png") no-repeat center center;
+                 height: 186px;
+            }
+
+            .first .text{
+                    text-align: center;
+                    margin: 80px 0;
+            }
+
+            .first img{
+                 margin: 0 34px;
+                 opacity: 0.1;
+            }
+
+            .first .info{
+                     width: 100%;
+                     background: url("images/info_1.png") no-repeat center center;
+                     height: 49px;
+            }
+
+
+             /*第一屏动画
+
+                我滚到第一屏，我就会给第一屏添加一个class属性值等于 current
+             */
+
+            .first.current img{
+                   transition:all 1s linear;
+                   margin: 0 3px;
+                   opacity: 1;
+
+            }
+            /*第二屏。。*/
+            .seconds>div{
+                 display: flex;
+                 justify-content: space-around;
+                 align-items: center;
+            }
+
+
+            .seconds .shield{
+                    width: 500px;
+
+            }
+
+            .seconds .info{
+                 background: url("images/info_2.png");
+                 height: 309px;
+                 width: 635px;
+            }
+
+            .seconds .shield img:nth-child(1){
+                    transform: rotate(45deg) translate(300px,300px);
+            }
+            .seconds .shield img:nth-child(2){
+                transform: translate(200px,200px) rotate(45deg) ;
+
+            }
+            .seconds .shield img:nth-child(3){
+                transform: translate(400px,340px) rotate(45deg) ;
+            }
+
+
+            /*第二屏动画*/
+            .seconds.current .shield img{
+                transition:all 1s linear;
+                transform: translate(0px,0px) rotate(0deg) ;
+            }
+
+            /*第三屏*/
+            .third{
+                 position: relative;
+                 overflow: hidden;
+            }
+
+            .third>div{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            .third .info{
+                 background: url("images/info_3.png");
+                 width: 631px;
+                 height: 278px;
+            }
+
+            .third .cricle{
+                background: url("images/circle.png");
+                width: 453px;
+                height: 449px;
+            }
+
+            .third .rocket{
+                background: url("images/rocket.png");
+                width: 203px;
+                height: 204px;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                transform:translate(200px,300px)
+            }
+
+            /*第三屏动画.*/
+            .third.current .rocket{
+                transition: all 1s linear;
+                transform:translate(1040px,-240px)
+            }
+
+            /*第四屏..*/
+            .fourth>div{
+                 display: flex;
+                 justify-content: space-around;
+                 align-items: center;
+            }
+
+            .fourth .info{
+                 background: url("images/info_4.png");
+                 width: 612px;
+                 height: 299px;
+            }
+
+            .fourth .search{
+                 width: 529px;
+                 height: 340px;
+                 position: relative;
+                 transform: translateX(-120%);
+            }
+
+            .fourth .search .toolbar{
+                   background: url("images/search.png");
+                   width: 529px;
+                   height: 66px;
+
+            }
+
+            .fourth .key{
+                 background: url("images/key.png");
+                 width: 0px;
+                 height: 22px;
+                 position: absolute;
+                 left: 20px;
+                 top: 23px;
+            }
+
+            .fourth .wrap{
+                 transform: translateY(-13px);
+                 overflow: hidden;
+            }
+
+            .fourth .result{
+                 transform:translateY(-100%);
+                 background: url("images/result.png");
+                 width: 529px;
+                 height: 372px;
+            }
+
+
+            /*第四屏的动画效果..*/
+
+            .fourth.current .search{
+                transition:all 1s linear;
+                transform: translateX(0);
+            }
+
+            .fourth.current .key{
+                animation: mykey 1s steps(5) 1s forwards;
+            }
+
+            @keyframes mykey {
+                    from{
+                        width: 0px;
+                    }to{
+                        width: 99px;
+                    }
+            }
+
+            .fourth.current .result{
+                 transition:all 1s linear 2.3s;
+                 transform: translateY(0);
+            }
+
+            /*第五屏*/
+            .fifth{
+                overflow: hidden;
+            }
+
+            .fifth>div{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .fifth .info{
+                 background: url("images/info_5.png");
+                 width: 1077px;
+                 height: 134px;
+                 margin: 30px 0;
+            }
+
+            .fifth .browser{
+                 background: url("images/toolbar.png") left top no-repeat;
+                 width: 1004px;
+                 flex: 1;
+                 position: relative;
+            }
+
+
+
+            .fifth .left{
+                 position: absolute;
+                 left: 0;
+                 width: 1px;
+                 height: 100%;
+                 background: #fff;
+                 transform:translateY(-100%);
+                 opacity: 0;
+            }
+
+
+            .fifth .right{
+                position: absolute;
+                right: 0;
+                width: 1px;
+                height: 100%;
+                background: #fff;
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            .fifth .top{
+                position: absolute;
+                left: 0;
+                top:0;
+                height: 1px;
+                width: 100%;
+                background: #fff;
+                transform:translateX(100%);
+                opacity: 0;
+            }
+            .fifth .bottom{
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 1px;
+                width: 100%;
+                background: #fff;
+
+            }
+
+            .fifth .toolbarline{
+                 position: absolute;
+                 height: 29px;
+                 width: 0px;
+                 left: 78px;
+                 top: 29px;
+                 border: 1px solid #fff;
+                 border-radius: 2px;
+                 opacity: 0;
+            }
+
+
+            .fifth .extra{
+                  position: absolute;
+                  right: 0;
+                  bottom: 0;
+                  background: url("images/extra.png");
+                 width: 394px;
+                  height: 29px;
+            }
+
+
+            .fifth .extraline{
+                 height: 1px;
+                 width: 100%;
+                 background: #fff;
+                 position: absolute;
+                 bottom: 26px;
+            }
+
+
+            .fifth.current .left{
+                transition:all 1s linear;
+                transform:translateY(0);
+                opacity: 1;
+            }
+
+            .fifth.current .right{
+                transition:all 1s linear;
+                transform:translateY(0);
+                opacity: 1;
+            }
+
+
+            .fifth.current .top{
+                 transition:all 1s linear;
+                 opacity: 1;
+                 transform: translateX(0);
+            }
+
+            .fifth.current .toolbarline{
+                transition:all 1s linear 1s;
+                opacity: 0.8;
+                width: 912px;
+            }
+
+
+
+    </style>
+
+</head>
+<body>
+        <!--因为我要用到jQuery 这个fullpage 插件
+        jQuery 的这个插件要求每一屏必须有一个class 属性，它的值等于section
+      然后jQuery 会根据这个section 去生成对应的html 代码.
+        -->
+        <div id="fullpage">
+                <div class="section first">
+                        <div class="logo"></div>
+                        <div class="text">
+                                <img src="images/text_1.png">
+                                <img src="images/text_2.png">
+                                <img src="images/text_3.png">
+                                <img src="images/text_4.png">
+                                <img src="images/text_5.png">
+                                <img src="images/text_6.png">
+                                <img src="images/text_7.png">
+                                <img src="images/text_8.png">
+                        </div>
+                        <div class="info"></div>
+                </div>
+                <div class="section seconds">
+                        <div class="shield">
+                            <img src="images/shield_1.png">
+                            <img src="images/shield_2.png">
+                            <img src="images/shield_3.png">
+                            <img src="images/shield_4.png">
+                            <img src="images/shield_5.png">
+                            <img src="images/shield_6.png">
+                            <img src="images/shield_7.png">
+                            <img src="images/shield_8.png">
+                            <img src="images/shield_9.png">
+                        </div>
+                        <div class="info"></div>
+                </div>
+                <div class="section third">
+                        <div class="info"></div>
+                        <div class="cricle"></div>
+                        <div class="rocket"></div>
+                </div>
+                <div class="section fourth">
+                     <!--第四屏..-->
+                    <div class="search">
+                           <div class="toolbar"></div>
+                           <div class="key"></div>
+                           <div class="wrap">
+                                <div class="result"></div>
+                           </div>
+                    </div>
+                    <div class="info"></div>
+                </div>
+                <div class="section fifth">
+                        <div class="info"></div>
+                        <div class="browser">
+                                <div class="toolbarline"></div>
+                                <div class="left"></div>
+                                <div class="top"></div>
+                                <div class="right"></div>
+                                <div class="bottom"></div>
+                                <div class="extra"></div>
+                            <div class="extraline"></div>
+                        </div>
+
+                </div>
+        </div>
+
+        <script>
+                $(function(){
+                     /*调用的是插件里面的方法，
+                     * 不能在jQuery 的文档里面找到该方法.
+                     *
+                     * 这个是调用插件的方法
+                     * 我需要往这个方法里面传递参数.
+                     *
+                     * 这个参数接受的是一个json
+                     *
+                     *
+                     * */
+                     $("#fullpage").fullpage({
+                            /*我可以在这里定义每一屏的颜色*/
+                         sectionsColor:['#0da5d6','#2AB561', '#DE8910', '#16BA9D', '#0DA5D6'],
+                         /*有一个事件，当滚轮滚动的时候触发。*/
+                         /*接受两个参数...
+                         *
+                         * index 是滚动当前的这一屏索引..
+                         * */
+                         afterLoad:function(afterlink,index){
+
+                                /*假设我滚动到某一屏，我就给这个一屏添加一个class 属性值
+                                * 然后我在样式里面可以定义这个class 对应的样式
+                                * 然后一滚动到这个位置，我就这一屏添加class，
+                                * 我假设在样式里面添加了样式，就可以来执行动画了.
+                                * */
+                                /*我把其它的current 给移除掉..*/
+                                $(".section").removeClass("current");
+                                //可以延迟给第一屏添加current
+                                setTimeout(function(){
+                                    $(".section").eq(index-1).addClass("current");
+                                },100);
+                         }
+                     });
+                })
+        </script>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>360 案例</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.fullPage.min.js"></script>
+    <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }
+            /*第一屏*/
+            .first{
+                padding-top: 80px;
+            }
+
+            .first .logo{
+                  width: 100%;
+                  background-image: url("images/logo.png");
+                  background-repeat: no-repeat;
+                  height: 186px;
+                  background-position: center center;
+            }
+
+            .first .text{
+                text-align: center;
+                margin: 80px 0px;
+            }
+            .first img{
+                margin: 0px 34px;
+                opacity: 0;
+            }
+
+            .first .info{
+                 height: 49px;
+                 width: 100%;
+                 background: url("images/info_1.png") center center no-repeat;
+            }
+
+            /*第一屏动画.*/
+            .first.current img{
+                transition:all 1s linear;
+                opacity: 1;
+                margin: 0px 5px;
+            }
+            /*第二屏幕*/
+            .seconds>div{
+                 display: flex;
+                 justify-content: space-around;
+                 align-items: center;
+            }
+
+            .seconds{
+                overflow: hidden;
+            }
+
+            .seconds .shield{
+                 width: 500px;
+            }
+            .seconds .info{
+                 background: url("images/info_2.png");
+                 height: 309px;
+                 width: 635px;
+            }
+
+            .seconds img:nth-child(1){
+                 transform: translate(-100%,-100%) rotateZ(30deg);
+            }
+
+            .seconds img:nth-child(2){
+                transform: translate(-100%,-100%) rotateZ(30deg);
+            }
+            .seconds img:nth-child(3){
+                transform: translate(100%,100%) rotateZ(30deg);
+            }
+            .seconds img:nth-child(4){
+                transform: translate(-100%,-100%) rotateZ(30deg);
+            }
+            .seconds img:nth-child(5){
+                transform: translate(200%,200%) rotateZ(30deg);
+            }
+            .seconds img:nth-child(6){
+                transform: translate(100%,100%) rotateZ(30deg);
+            }
+            .seconds img:nth-child(7){
+                transform: translate(-80%,-90%) rotateZ(30deg);
+            }
+            .seconds img:nth-child(8){
+                transform: translate(-100%,-100%) rotateZ(30deg);
+            }
+            .seconds img:nth-child(9){
+                transform: translate(100%,100%) rotateZ(30deg);
+            }
+            /*第二屏动画*/
+            .seconds.current img{
+                transition:all 1s linear;
+                transform: translate(0,0) rotateZ(0deg);
+            }
+
+            .third {
+                position: relative;
+                overflow: hidden;
+            }
+
+            /*第三屏*/
+            .third>div{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            .third .info{
+                 width: 631px;
+                 height: 278px;
+                 background: url("images/info_3.png");
+            }
+
+            .third .cricle{
+                 background: url("images/circle.png");
+                 width: 453px;
+                 height: 449px;
+            }
+
+            .third .rocket{
+                 position: absolute;
+                 bottom: 0;
+                 background: url("images/rocket.png");
+                 width: 203px;
+                 height: 204px;
+                 left: 0;
+                 transform: translate(200px ,300px);
+            }
+
+            .third.current .rocket{
+                transition:all 1s linear;
+                transform: translate(960px ,-240px);
+            }
+
+            .fourth>div{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            .fourth .info{
+                 background: url("images/info_4.png");
+                 width: 612px;
+                 height: 299px;
+            }
+
+            .fourth .search{
+                 width: 529px;
+                 height: 340px;
+                 position: relative;
+                 transform: translateX(-120%);
+
+            }
+            .fourth .toolbar{
+                 background: url("images/search.png");
+                 width: 529px;
+                 height: 66px;
+            }
+            .fourth .key{
+                 position: absolute;
+                 left: 20px;
+                 top: 23px;
+                 background: url("images/key.png");
+                /* width: 99px;*/
+                 width: 0px;
+                 height: 22px;
+            }
+
+            .fourth .wrap{
+                  width: 539px;
+                  height: 372px;
+                  transform: translateY(-14px);
+                  overflow: hidden;
+            }
+            .fourth .result{
+                 background: url("images/result.png");
+                 width: 529px;
+                 height: 372px;
+                 transform: translateY(-100%);
+            }
+
+            /*第四屏动画.*/
+            .fourth.current .search{
+                  transition:all 1s linear;
+                  transform:translateX(0);
+            }
+
+            .fourth.current .key{
+                  animation: key 1s steps(5) 1 1.2s forwards;
+            }
+
+            .fourth.current .result{
+                animation: beat 1s linear 1 2.2s forwards;
+            }
+
+            @keyframes key {
+                  from{
+                      width: 0px;
+                  }
+                  to{
+                      width: 99px;
+                  }
+            }
+
+            @keyframes beat {
+                  from{
+                        transform: translateY(-100%);
+                  }to{
+                        transform: translateY(0);
+                  }
+            }
+
+            /*第五屏幕..*/
+            .fifth>div{
+                 display: flex;
+                 flex-direction: column;
+                 align-items: center;
+            }
+
+            .fifth .info{
+                 background: url("images/info_5.png") no-repeat center center;
+                 width: 1077px;
+                 height: 134px;
+                 margin: 30px 0;
+            }
+
+            .fifth .browser{
+                 background: url("images/toolbar.png") left top no-repeat;
+                 width: 1004px;
+                 flex: 1;
+                 position: relative;
+            }
+
+            .left{
+                 position: absolute;
+                 width: 1px;
+                 height:100%;
+                 left:0;
+                 top: 0;
+                 background: #fff;
+                 transform: translateY(-100%);
+            }
+            .right{
+                position: absolute;
+                width: 1px;
+                height:100%;
+                right:0;
+                top: 0;
+                background: #fff;
+                transform:translateY(100%);
+            }
+            .top{
+                position: absolute;
+                height: 1px;
+                width:100%;
+                top: 0;
+                background: #fff;
+            }
+            .bottom{
+                position: absolute;
+                width: 100%;
+                height:1px;
+                bottom:0;
+                background: #fff;
+            }
+
+            .extra{
+                 position: absolute;
+                 bottom: 0;
+                 right: 0;
+                 background: url("images/extra.png") no-repeat right bottom ;
+                 width: 394px;
+                 height: 29px;
+            }
+
+            .extra_line{
+                 height: 1px;
+                 position: absolute;
+                 width: 100%;
+                 bottom: 26px;
+                 background: #fff;
+            }
+
+            .toolbarline{
+                 width: 916px;
+                 height: 29px;
+                 position: absolute;
+                 top: 29px;
+                 border: 1px solid #fff;
+                 left: 75px;
+                 border-radius: 2px;
+            }
+
+            .fifth.current .left{
+                 transition:all 1s linear;
+                 transform:translateY(0);
+            }
+
+            .fifth.current .right{
+                transition:all 1s linear;
+                transform:translateY(0);
+            }
+
+    </style>
+</head>
+<body>
+    <div id="fullpageId">
+        <div class="section first">
+              <div class="logo"></div>
+              <div class="text">
+                  <img src="images/text_1.png">
+                  <img src="images/text_2.png">
+                  <img src="images/text_3.png">
+                  <img src="images/text_4.png">
+                  <img src="images/text_5.png">
+                  <img src="images/text_6.png">
+                  <img src="images/text_7.png">
+                  <img src="images/text_8.png">
+              </div>
+              <div class="info"></div>
+        </div>
+        <div class="section seconds">
+              <div class="shield">
+                  <img src="images/shield_1.png">
+                  <img src="images/shield_2.png">
+                  <img src="images/shield_3.png">
+                  <img src="images/shield_4.png">
+                  <img src="images/shield_5.png">
+                  <img src="images/shield_6.png">
+                  <img src="images/shield_7.png">
+                  <img src="images/shield_8.png">
+                  <img src="images/shield_9.png">
+              </div>
+              <div class="info"></div>
+        </div>
+        <div class="section third">
+                <div class="info"></div>
+                <div class="cricle"></div>
+                <div class="rocket"></div>
+        </div>
+        <div class="section fourth">
+                <div class="search">
+                        <div class="key"></div>
+                        <div class="toolbar"></div>
+                        <div class="wrap">
+                                <div class="result"></div>
+                        </div>
+                </div>
+                <div class="info"></div>
+        </div>
+        <div class="section fifth">
+                <div class="info"></div>
+                <div class="browser">
+                        <div class="toolbarline"></div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+
+                        <div class="extra_line"></div>
+                        <div class="extra"></div>
+                </div>
+        </div>
+    </div>
+    <script>
+            $(function(){
+                    $("#fullpageId").fullpage({
+                        sectionsColor : ['#0da5d6', '#2AB561', '#DE8910', '#16BA9D', '#0DA5D6'],
+                        afterLoad: function (anchorLink, index) {
+                            $('.section').removeClass('current');
+                            // 延时100毫秒执行
+                           setTimeout(function () {
+                                $('.section').eq(index - 1).addClass('current');
+                          }, 100);
+                        }
+                    })
+            });
+    </script>
+</body>
+</html>
